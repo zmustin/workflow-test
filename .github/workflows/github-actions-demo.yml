@@ -1,8 +1,11 @@
-name: Github Actions Demo 2
+name: Github Actions Demo With Label
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  push:
+  pull_request:
+    types: [ labeled ]
 jobs:
-  Explore-GitHub-Actions-2:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -16,3 +19,11 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  build:
+    if: ${{ github.event.label.name == 'bug' }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo bug label added!
