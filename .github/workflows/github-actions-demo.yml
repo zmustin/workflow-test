@@ -1,4 +1,4 @@
-name: Github Actions Demo With Label
+name: Github Actions Demo Acting on Label
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
