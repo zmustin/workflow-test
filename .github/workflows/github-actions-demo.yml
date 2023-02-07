@@ -1,7 +1,7 @@
 name: Github Actions Demo With Label
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  push:
+  pull_request:
     types: [ labeled ]
 jobs:
   Explore-GitHub-Actions:
