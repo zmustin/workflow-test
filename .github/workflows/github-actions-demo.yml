@@ -31,5 +31,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "We are now trying to run the script."
-      - run: ./build_tools/github_actions/test_run.sh
+      - run: bash ./build_tools/github_actions/test_run.sh
       - run: echo "Should now have run the script."
