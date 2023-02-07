@@ -30,6 +30,9 @@ jobs:
     if: ${{ github.event.label.name == 'documentation' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "We are now trying to run the script."
-      - run: bash ./build_tools/github_actions/test_run.sh
-      - run: echo "Should now have run the script."
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+         chmod +x ./build_tools/github_actions/test_run.sh
+         ./build_tools/github_actions/test_run.sh
+      shell: bash
