@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         chmod +x ./build_tools/github_actions/test_run.sh
-         ./build_tools/github_actions/test_run.sh
+    - name: Run test script
+      run: ./build_tools/github_actions/test_run.sh
       shell: bash
