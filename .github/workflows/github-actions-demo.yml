@@ -1,10 +1,10 @@
 name: A/B Diff Performance Benchmarking
-run-name: Run A/B diff performance benchmarks on PR ${{ github.event.pull_request.number }}.
+run-name: Run A/B diff performance benchmarks on PR #${{ github.event.pull_request.number }}.
 on:
   pull_request:
     types: [ labeled ]
 jobs:
-  Run-Script:
+  run-test-script:
     if: ${{ github.event.label.name == 'ready for benchmarking' }}
     runs-on: ubuntu-latest
     steps:
