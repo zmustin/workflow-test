@@ -2,7 +2,7 @@ name: A/B Diff Performance Benchmarking
 run-name: Run A/B diff performance benchmarks on PR #${{ github.event.pull_request.number }}.
 on:
   pull_request:
-    types: [ labeled , edited]
+    types: [created, edited, labeled]
   push:
 jobs:
   run-test-script:
