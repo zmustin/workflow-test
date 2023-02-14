@@ -14,3 +14,13 @@ jobs:
          chmod +x ./build_tools/github_actions/test_run.sh
          ./build_tools/github_actions/test_run.sh
       shell: bash
+  run-new-test:
+    if: ${{ github.event.label.name == 'bug' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+         chmod +x ./build_tools/github_actions/test_run-2.sh
+         ./build_tools/github_actions/test_run-2.sh
+      shell: bash
