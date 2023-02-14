@@ -3,14 +3,20 @@ run-name: Run A/B diff performance benchmarks on PR #${{ github.event.pull_reque
 on:
   pull_request:
     types: [ labeled ]
+  push:
 jobs:
   run-test-script:
-    if: ${{ github.event.label.name == 'ready for benchmarking' }}
+    if: contains(github.event.pull_request.labels.*.name, 'ready for benchmarking')
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         chmod +x ./build_tools/github_actions/test_run.sh
-         ./build_tools/github_actions/test_run.sh
-      shell: bash
+      - name: "Getting started..."
+        run: echo "Running the job on ${{ runner.os }}."
+      - name: "Checking out repository"
+        uses: actions/checkout@v3
+      - name: "Run test script"
+        run: |
+          chmod +x ./build_tools/github_actions/test_script.sh
+          ./build_tools/github_actions/test_script.sh
+        shell: bash
+      - name: "Finishing up..."
+        run: echo "Job done."
