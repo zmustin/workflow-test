@@ -4,6 +4,7 @@ on:
   pull_request:
     types: [created, edited, labeled]
   push:
+  create:
 jobs:
   run-test-script:
     if: contains(github.event.pull_request.labels.*.name, 'ready for benchmarking')
