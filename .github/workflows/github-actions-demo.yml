@@ -6,6 +6,16 @@ on:
   push:
   create:
 jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Hello"
+        run: echo "hello world"
+      - name: "printing stuff"
+        run: |
+          echo "${{ github.event }} event."
+          echo "${{ github.event.pull_request.labels.*.name }} PR name."
+          echo "${{ github.event.push.labels.*.name }} push name."
   run-test-script:
     if: contains(github.event.pull_request.labels.*.name, 'ready for benchmarking')
     runs-on: ubuntu-latest
