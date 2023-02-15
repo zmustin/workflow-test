@@ -20,11 +20,13 @@ jobs:
     steps:
       - name: "Hello"
         run: echo "hello world"
-      - name: "printing stuff"
-        run: |
-          echo "${{ github.event }} event."
-          echo "${{ github.event.pull_request.labels.*.name }} PR name."
-          echo "${{ github.event.push.labels.*.name }} push name."
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
   run-test-script:
     if: contains(github.event.pull_request.labels.*.name, 'ready for benchmarking')
     runs-on: ubuntu-latest
